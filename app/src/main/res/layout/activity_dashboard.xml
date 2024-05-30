@@ -1,0 +1,136 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashboardActivity">
+
+    <!-- ImageView for background -->
+    <ImageView
+        android:id="@+id/backgroundImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/auto_background"
+        android:scaleType="centerCrop" />
+
+    <!-- Speedometer TextView -->
+    <TextView
+        android:id="@+id/speedometerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Speed: 0 km/h"
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- Fuel Level TextView -->
+    <TextView
+        android:id="@+id/fuelLevelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fuel Level: "
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/speedometerTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- Temperature TextView -->
+    <TextView
+        android:id="@+id/tempTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Temperature: "
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/fuelLevelTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- RPM TextView -->
+    <TextView
+        android:id="@+id/rpmTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RPM: "
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/tempTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- Clock TextView -->
+    <TextView
+        android:id="@+id/clockTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clock: "
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/rpmTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- "Background Data" TextView -->
+    <TextView
+        android:id="@+id/backgroundDataTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Background Data"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:layout_below="@id/clockTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- EditText for entering minimum speed -->
+    <EditText
+        android:id="@+id/minSpeedEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter minimum speed (km/h)"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@id/backgroundDataTextView"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/maxTempEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter maximum engine temperature (°C)"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@id/minSpeedEditText"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/button_open_dashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open Dashboard"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/submitConditionsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/maxTempEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Filter Dashboards" />
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_below="@id/submitConditionsButton"
+        android:layout_marginTop="16dp"/>
+
+</RelativeLayout>
