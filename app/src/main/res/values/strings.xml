@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">InstrumentClusterAuto</string>
+    <string name="fab_desc">Open Full Dashboard</string>
 </resources>

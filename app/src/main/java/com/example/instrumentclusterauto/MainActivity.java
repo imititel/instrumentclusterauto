@@ -1,13 +1,11 @@
 package com.example.instrumentclusterauto;
 
-import android.os.Bundle;
 import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
+import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,22 +19,21 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends AppCompatActivity {
     private List<DigitalDashboard> dashboards = new ArrayList<>();
     private TextView resultTextView;
-
     private TextView speedometerTextView;
     private TextView fuelLevelTextView;
     private TextView tempTextView;
     private TextView rpmTextView;
     private TextView clockTextView;
     private ScheduledExecutorService scheduler;
-    private Button openDashboardButton;
+    private FloatingActionButton openDashboardButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.activity_main);
 
         // Initialize UI components
-        openDashboardButton = findViewById(R.id.button_open_dashboard);
+        openDashboardButton = findViewById(R.id.openDashboardButton);
         openDashboardButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
             startActivity(intent);
@@ -75,15 +72,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setSubmitConditionsButton(EditText minSpeedEditText, EditText maxTempEditText) {
-        Button submitConditionsButton = findViewById(R.id.submitConditionsButton);
-        submitConditionsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    displayFilteredDashboards(minSpeedEditText, maxTempEditText);
-                } catch (NumberFormatException e) {
-                    resultTextView.setText("Please enter valid numbers.");
-                }
+        findViewById(R.id.submitConditionsButton).setOnClickListener(view -> {
+            try {
+                displayFilteredDashboards(minSpeedEditText, maxTempEditText);
+            } catch (NumberFormatException e) {
+                resultTextView.setText("Please enter valid numbers.");
             }
         });
     }
