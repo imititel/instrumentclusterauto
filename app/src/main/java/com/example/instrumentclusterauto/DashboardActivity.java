@@ -1,80 +1,89 @@
 package com.example.instrumentclusterauto;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class DashboardActivity extends AppCompatActivity {
+    private TextView rssFeedTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);  // Make sure this is the correct layout file name
+        setContentView(R.layout.activity_full_dashboard);
 
-        // Call fetchDataFromUrl when activity starts
-        fetchDataFromUrl();
+        rssFeedTextView = findViewById(R.id.rssFeedTextView);
+
+        // Using Executors to fetch data
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            String result = fetchData("https://feeds.bbci.co.uk/news/rss.xml");
+            runOnUiThread(() -> rssFeedTextView.setText(result));
+        });
+
+        FloatingActionButton fab = findViewById(R.id.openDashboardButton);
+        if (fab != null) {
+            fab.setOnClickListener(v -> {
+                Intent intent = new Intent(DashboardActivity.this, FullDashboardActivity.class);
+                startActivity(intent);
+            });
+        }
     }
 
-    private void fetchDataFromUrl() {
-        new Thread(() -> {
-            try {
-                URL url = new URL("https://feeds.bbci.co.uk/news/rss.xml"); // BBC News RSS feed
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                InputStream inputStream = new BufferedInputStream(connection.getInputStream());
-
-                // Here we invoke the XML parsing right after fetching the data
-                parseRSSFeed(inputStream);
-
-                connection.disconnect();  // Close the connection after parsing
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }).start();
+    private String fetchData(String urlString) {
+        String result = "";
+        try {
+            URL url = new URL(urlString);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            InputStream inputStream = new BufferedInputStream(connection.getInputStream());
+            result = parseRSSFeed(inputStream);
+            connection.disconnect();
+        } catch (IOException e) {
+            Log.e("DashboardActivity", "Network connection failed", e);
+        }
+        return result;
     }
 
-    private void parseRSSFeed(InputStream inputStream) {
+    private String parseRSSFeed(InputStream inputStream) {
+        StringBuilder titles = new StringBuilder();
         try {
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             factory.setNamespaceAware(false);
             XmlPullParser xpp = factory.newPullParser();
-
-            // Set the input for the parser
             xpp.setInput(inputStream, "UTF-8");
-
             boolean insideItem = false;
             int eventType = xpp.getEventType();
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 if (eventType == XmlPullParser.START_TAG) {
-
                     if (xpp.getName().equalsIgnoreCase("item")) {
                         insideItem = true;
                     } else if (xpp.getName().equalsIgnoreCase("title")) {
                         if (insideItem) {
-                            final String title = xpp.nextText();
-                            Log.d("Title:", title);  // Use this data as needed, e.g., update UI
-                            // For UI update, remember to run on UI thread
-                            runOnUiThread(() -> {
-                                // update your TextView or other UI elements here
-                                // Example: someTextView.setText(title);
-                            });
+                            String title = xpp.nextText();
+                            titles.append(title).append("\n");
                         }
                     }
                 } else if (eventType == XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("item")) {
                     insideItem = false;
                 }
-                eventType = xpp.next();  // Move to the next event
+                eventType = xpp.next();
             }
         } catch (XmlPullParserException | IOException e) {
-            e.printStackTrace();
+            Log.e("DashboardActivity", "Error parsing data", e);
         }
-    }  // This closes the parseRSSFeed method
-
-}  // This closes the DashboardActivity class
+        return titles.toString();
+    }
+}
