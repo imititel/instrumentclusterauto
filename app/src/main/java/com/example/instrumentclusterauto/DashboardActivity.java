@@ -40,6 +40,8 @@ public class DashboardActivity extends AppCompatActivity {
                 Intent intent = new Intent(DashboardActivity.this, FullDashboardActivity.class);
                 startActivity(intent);
             });
+        } else {
+            Log.e("DashboardActivity", "FloatingActionButton is null");
         }
     }
 

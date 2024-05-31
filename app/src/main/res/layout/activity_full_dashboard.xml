@@ -11,6 +11,7 @@
         android:src="@drawable/rssfeed"
         android:scaleType="centerCrop" />
 
+    <!-- Full Dashboard TextView -->
     <TextView
         android:id="@+id/fullDashboardTextView"
         android:layout_width="match_parent"
@@ -20,23 +21,12 @@
         android:textColor="@android:color/black"
         android:gravity="center" />
 
+    <!-- RSS Feed TextView -->
     <TextView
         android:id="@+id/rssFeedTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/fullDashboardTextView"
         android:padding="16dp"
-        android:textColor="@android:color/white" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/openDashboardButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="16dp"
-        android:contentDescription="@string/fab_desc"
-        android:src="@drawable/ic_dashboard"
-        app:fabSize="mini"
-        app:backgroundTint="@color/design_default_color_primary" />
-
+        android:textColor="@android:color/black" />
 </RelativeLayout>
