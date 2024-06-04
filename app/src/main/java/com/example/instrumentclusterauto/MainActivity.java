@@ -25,28 +25,21 @@ public class MainActivity extends AppCompatActivity {
     private TextView rpmTextView;
     private TextView clockTextView;
     private ScheduledExecutorService scheduler;
-    private FloatingActionButton openDashboardButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize UI components
-        openDashboardButton = findViewById(R.id.openDashboardButton);
-        openDashboardButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
-            startActivity(intent);
-        });
-
+        // Find views by their IDs
         EditText minSpeedEditText = findViewById(R.id.minSpeedEditText);
         EditText maxTempEditText = findViewById(R.id.maxTempEditText);
         resultTextView = findViewById(R.id.resultTextView);
         minSpeedEditText.setHintTextColor(getResources().getColor(android.R.color.white));
         maxTempEditText.setHintTextColor(getResources().getColor(android.R.color.white));
 
-        // Initialize dashboards
-        initializeDashboards();
+        // Initialize dashboards in a background thread
+        Executors.newSingleThreadExecutor().execute(this::initializeDashboards);
 
         // Set up conditions button
         setSubmitConditionsButton(minSpeedEditText, maxTempEditText);
@@ -60,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Start updating background data
         startDataUpdate();
+
+        // Set up button to open DashboardActivity
+        FloatingActionButton openDashboardButton = findViewById(R.id.openDashboardButton);
+        openDashboardButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void initializeDashboards() {
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 displayFilteredDashboards(minSpeedEditText, maxTempEditText);
             } catch (NumberFormatException e) {
-                resultTextView.setText("Please enter valid numbers.");
+                runOnUiThread(() -> resultTextView.setText("Please enter valid numbers."));
             }
         });
     }
@@ -92,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
                     result.append(dashboard.displayInfo()).append("\n");
                 }
             }
-            resultTextView.setText(result.toString());
+            runOnUiThread(() -> resultTextView.setText(result.toString()));
         } catch (NumberFormatException e) {
-            resultTextView.setText("Please enter valid numbers.");
+            runOnUiThread(() -> resultTextView.setText("Please enter valid numbers."));
         }
     }
 

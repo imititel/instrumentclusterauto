@@ -1,8 +1,10 @@
 package com.example.instrumentclusterauto;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -19,6 +21,7 @@ import java.util.concurrent.Executors;
 
 public class DashboardActivity extends AppCompatActivity {
     private TextView rssFeedTextView;
+    private final String RSS_FEED_URL = "https://feeds.bbci.co.uk/news/rss.xml";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,7 @@ public class DashboardActivity extends AppCompatActivity {
         // Using Executors to fetch data
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
-            String result = fetchData("https://feeds.bbci.co.uk/news/rss.xml");
+            String result = fetchData(RSS_FEED_URL);
             runOnUiThread(() -> rssFeedTextView.setText(result));
         });
 
@@ -43,18 +46,34 @@ public class DashboardActivity extends AppCompatActivity {
         } else {
             Log.e("DashboardActivity", "FloatingActionButton is null");
         }
+
+        // Adding button to open URL in browser
+        Button openBrowserButton = findViewById(R.id.openBrowserButton);
+        if (openBrowserButton != null) {
+            openBrowserButton.setOnClickListener(v -> {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RSS_FEED_URL));
+                startActivity(browserIntent);
+            });
+        } else {
+            Log.e("DashboardActivity", "OpenBrowserButton is null");
+        }
     }
 
     private String fetchData(String urlString) {
         String result = "";
+        HttpURLConnection connection = null;
         try {
             URL url = new URL(urlString);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = new BufferedInputStream(connection.getInputStream());
             result = parseRSSFeed(inputStream);
-            connection.disconnect();
         } catch (IOException e) {
             Log.e("DashboardActivity", "Network connection failed", e);
+            result = "Network connection failed: " + e.getMessage();
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
         }
         return result;
     }
