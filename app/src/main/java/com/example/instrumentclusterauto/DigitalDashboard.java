@@ -4,14 +4,14 @@ public class DigitalDashboard {
     private int speedometer;
     private int fuelLevel;
     private int engineTemp;
-    private int tachometer;
+    private int rpm;
     private String clock;
 
-    public DigitalDashboard(int speedometer, int fuelLevel, int engineTemp, int tachometer, String clock) {
+    public DigitalDashboard(int speedometer, int fuelLevel, int engineTemp, int rpm, String clock) {
         this.speedometer = speedometer;
         this.fuelLevel = fuelLevel;
         this.engineTemp = engineTemp;
-        this.tachometer = tachometer;
+        this.rpm = rpm;
         this.clock = clock;
     }
 
@@ -27,8 +27,8 @@ public class DigitalDashboard {
         return engineTemp;
     }
 
-    public int getTachometer() {
-        return tachometer;
+    public int getRpm() {
+        return rpm;
     }
 
     public String getClock() {
@@ -36,10 +36,6 @@ public class DigitalDashboard {
     }
 
     public String displayInfo() {
-        return "Speedometer: " + speedometer + " km/h | " +
-                "Fuel Level: " + fuelLevel + "% | " +
-                "Engine Temp: " + engineTemp + "°C | " +
-                "RPM: " + tachometer + " | " +
-                "Clock: " + clock;
+        return "Speed: " + speedometer + " km/h, Fuel Level: " + fuelLevel + "%, Temp: " + engineTemp + "°C, RPM: " + rpm + ", Time: " + clock;
     }
 }

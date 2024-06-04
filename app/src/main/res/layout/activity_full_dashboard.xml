@@ -11,22 +11,33 @@
         android:src="@drawable/rssfeed"
         android:scaleType="centerCrop" />
 
-    <!-- Full Dashboard TextView -->
-    <TextView
-        android:id="@+id/fullDashboardTextView"
+    <!-- LinearLayout for main content -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="Full Dashboard Content"
-        android:textColor="@android:color/black"
-        android:gravity="center" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <!-- RSS Feed TextView -->
-    <TextView
-        android:id="@+id/rssFeedTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fullDashboardTextView"
-        android:padding="16dp"
-        android:textColor="@android:color/black" />
+        <!-- Button to open URL in browser -->
+        <Button
+            android:id="@+id/openBrowserButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="Open in Browser" />
+
+        <!-- ScrollView for RSS Feed TextView -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/rssFeedTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black" />
+        </ScrollView>
+    </LinearLayout>
 </RelativeLayout>
