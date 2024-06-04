@@ -2,8 +2,6 @@ package com.example.instrumentclusterauto;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
-import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.text.SimpleDateFormat;
@@ -15,6 +13,9 @@ import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private List<DigitalDashboard> dashboards = new ArrayList<>();
@@ -58,6 +59,13 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton openDashboardButton = findViewById(R.id.openDashboardButton);
         openDashboardButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+            startActivity(intent);
+        });
+
+        // Set up button to open InternationalizationActivity
+        FloatingActionButton openInternationalizationButton = findViewById(R.id.openInternationalizationButton);
+        openInternationalizationButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, InternationalizationActivity.class);
             startActivity(intent);
         });
     }

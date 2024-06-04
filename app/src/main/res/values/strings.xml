@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">InstrumentClusterAuto</string>
-    <string name="fab_desc">Open Full Dashboard</string>
+    <string name="app_name">Instrument Cluster Auto</string>
+    <string name="hello_world">Hello World</string>
+    <string name="welcome_message">Welcome to the internationalization example</string>
+    <string name="welcome_message_de">Willkommen zum Internationalisierungsbeispiel (DE)</string>
+    <string name="welcome_message_es">Bienvenido al ejemplo de internacionalización (ES)</string>
+    <string name="welcome_message_ro">Bine ai venit la exemplul de internaționalizare (RO)</string>
+    <string name="fab_desc">Button to open the internationalization screen</string>
 </resources>
