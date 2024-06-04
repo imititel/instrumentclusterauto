@@ -128,15 +128,27 @@
         android:layout_below="@id/submitConditionsButton"
         android:layout_marginTop="16dp"/>
 
+    <!-- Existing Floating Action Button for Dashboard -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/openDashboardButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
         android:layout_margin="16dp"
-        android:contentDescription="@string/fab_desc"
         android:src="@drawable/ic_dashboard"
-        app:fabSize="mini"
-        app:backgroundTint="@color/design_default_color_primary" />
+        app:backgroundTint="@color/colorAccent"
+        app:fabSize="normal" />
+
+    <!-- New Floating Action Button for Internationalization -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/openInternationalizationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_internationalization"
+        app:backgroundTint="@color/holo_green_light"
+        app:fabSize="normal" />
 </RelativeLayout>
