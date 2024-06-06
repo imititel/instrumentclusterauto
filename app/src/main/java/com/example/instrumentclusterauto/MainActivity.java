@@ -75,6 +75,17 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, InternationalizationActivity.class);
             startActivity(intent);
         });
+
+        // Set up button to open DataTransferActivity
+        FloatingActionButton openDataTransferButton = findViewById(R.id.openDataTransferButton);
+        openDataTransferButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DataTransferActivity.class);
+            String speed = speedometerTextView.getText().toString();
+            String temp = tempTextView.getText().toString();
+            intent.putExtra("speed", speed);
+            intent.putExtra("temp", temp);
+            startActivity(intent);
+        });
     }
 
     private void initializeDashboards() {

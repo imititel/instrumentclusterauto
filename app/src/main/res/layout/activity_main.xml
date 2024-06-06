@@ -165,4 +165,15 @@
         app:backgroundTint="@color/holo_green_light"
         app:fabSize="normal" />
 
+    <!-- New Floating Action Button for DataTransfer -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/openDataTransferButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@id/openInternationalizationButton"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_transfer"
+        app:backgroundTint="@color/purple_500"
+        app:fabSize="normal" />
 </RelativeLayout>

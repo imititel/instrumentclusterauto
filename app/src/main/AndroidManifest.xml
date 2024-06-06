@@ -22,6 +22,6 @@
         <activity android:name=".FullDashboardActivity" />
         <activity android:name=".InternationalizationActivity"></activity>
         <activity android:name=".DataEntryActivity"></activity>
+        <activity android:name=".DataTransferActivity" />
     </application>
-
 </manifest>
