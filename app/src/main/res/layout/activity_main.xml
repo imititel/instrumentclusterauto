@@ -96,6 +96,7 @@
         android:layout_below="@id/backgroundDataTextView"
         android:layout_marginTop="16dp"/>
 
+    <!-- EditText for entering maximum temperature -->
     <EditText
         android:id="@+id/maxTempEditText"
         android:layout_width="match_parent"
@@ -140,15 +141,28 @@
         app:backgroundTint="@color/colorAccent"
         app:fabSize="normal" />
 
+    <!-- New Floating Action Button for DataEntry -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/openDataEntryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_data_entry"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:fabSize="normal" />
+
     <!-- New Floating Action Button for Internationalization -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/openInternationalizationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
+        android:layout_toEndOf="@id/openDataEntryButton"
         android:layout_margin="16dp"
         android:src="@drawable/ic_internationalization"
         app:backgroundTint="@color/holo_green_light"
         app:fabSize="normal" />
+
 </RelativeLayout>

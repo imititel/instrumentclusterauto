@@ -62,6 +62,13 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Set up button to open DataEntryActivity
+        FloatingActionButton openDataEntryButton = findViewById(R.id.openDataEntryButton);
+        openDataEntryButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DataEntryActivity.class);
+            startActivity(intent);
+        });
+
         // Set up button to open InternationalizationActivity
         FloatingActionButton openInternationalizationButton = findViewById(R.id.openInternationalizationButton);
         openInternationalizationButton.setOnClickListener(v -> {
