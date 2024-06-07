@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/auto_background"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:layout_marginTop="16dp" />
 
     <!-- Speedometer TextView -->
     <TextView
@@ -174,6 +175,30 @@
         android:layout_toEndOf="@id/openInternationalizationButton"
         android:layout_margin="16dp"
         android:src="@drawable/ic_transfer"
-        app:backgroundTint="@color/purple_500"
+        app:backgroundTint="@color/teal_700"
         app:fabSize="normal" />
+
+    <!-- Floating Action Button for FileOperationActivity -->
+
+    <!-- Container for Fragment -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/openFileOperationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="-127dp"
+        android:layout_marginBottom="16dp"
+        android:layout_toStartOf="@id/openDataTransferButton"
+        android:src="@drawable/ic_file_operation"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="normal" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/resultTextView"
+        android:layout_above="@+id/openDashboardButton" />
+
 </RelativeLayout>

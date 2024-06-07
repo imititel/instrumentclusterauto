@@ -1,3 +1,17 @@
 <resources>
-    <string name="welcome_message_ro">Bine ai venit la exemplul de internaționalizare</string>
+    <string name="app_name">Instrument Cluster Auto</string>
+    <string name="hello_world">Salut lume</string>
+    <string name="welcome_message">Bine ai venit la tabloul de bord auto</string>
+    <string name="fab_desc">Buton pentru a deschide ecranul de internaționalizare</string>
+    <string name="language_english">Engleză</string>
+    <string name="language_german">Germană</string>
+    <string name="language_spanish">Spaniolă</string>
+    <string name="language_romanian">Română</string>
+
+    <string name="speed_label">Viteză</string>
+    <string name="fuel_label">Nivelul combustibilului</string>
+    <string name="temperature_label">Temperatura motorului</string>
+    <string name="rpm_label">RPM</string>
+    <string name="clock_label">Ceas</string>
+    <string name="background_data_label">Date de fundal</string>
 </resources>

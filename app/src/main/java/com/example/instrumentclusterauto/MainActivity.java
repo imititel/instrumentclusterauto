@@ -62,17 +62,17 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Set up button to open DataEntryActivity
-        FloatingActionButton openDataEntryButton = findViewById(R.id.openDataEntryButton);
-        openDataEntryButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, DataEntryActivity.class);
-            startActivity(intent);
-        });
-
         // Set up button to open InternationalizationActivity
         FloatingActionButton openInternationalizationButton = findViewById(R.id.openInternationalizationButton);
         openInternationalizationButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, InternationalizationActivity.class);
+            startActivity(intent);
+        });
+
+        // Set up button to open DataEntryActivity
+        FloatingActionButton openDataEntryButton = findViewById(R.id.openDataEntryButton);
+        openDataEntryButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DataEntryActivity.class);
             startActivity(intent);
         });
 
@@ -84,6 +84,13 @@ public class MainActivity extends AppCompatActivity {
             String temp = tempTextView.getText().toString();
             intent.putExtra("speed", speed);
             intent.putExtra("temp", temp);
+            startActivity(intent);
+        });
+
+        // Set up button to open FileOperationActivity
+        FloatingActionButton openFileOperationButton = findViewById(R.id.openFileOperationButton);
+        openFileOperationButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, FileOperationActivity.class);
             startActivity(intent);
         });
     }
@@ -126,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void startDataUpdate() {
         scheduler = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(this::updateBackgroundData, 0, 1, TimeUnit.SECONDS);
+        scheduler.scheduleWithFixedDelay(this::updateBackgroundData, 0, 1, TimeUnit.SECONDS);
     }
 
     private void updateBackgroundData() {

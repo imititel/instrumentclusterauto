@@ -18,10 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DashboardActivity" />
-        <activity android:name=".FullDashboardActivity" />
-        <activity android:name=".InternationalizationActivity"></activity>
-        <activity android:name=".DataEntryActivity"></activity>
-        <activity android:name=".DataTransferActivity" />
+        <activity android:name=".DashboardActivity"/>
+        <activity android:name=".FullDashboardActivity"/>
+        <activity
+            android:name=".InternationalizationActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity android:name=".DataEntryActivity"/>
+        <activity android:name=".DataTransferActivity"/>
+        <activity android:name=".FileOperationActivity"/>
     </application>
 </manifest>

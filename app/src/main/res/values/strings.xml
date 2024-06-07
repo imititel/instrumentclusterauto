@@ -6,4 +6,10 @@
     <string name="welcome_message_es">Bienvenido al ejemplo de internacionalización (ES)</string>
     <string name="welcome_message_ro">Bine ai venit la exemplul de internaționalizare (RO)</string>
     <string name="fab_desc">Button to open the internationalization screen</string>
+    <string name="speed">Speed</string>
+    <string name="temperature">Temperature</string>
+    <string name="language_english">English</string>
+    <string name="language_german">German</string>
+    <string name="language_spanish">Spanish</string>
+    <string name="language_romanian">Romanian</string>
 </resources>
