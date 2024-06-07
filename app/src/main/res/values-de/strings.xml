@@ -1,3 +1,17 @@
 <resources>
-    <string name="welcome_message_de">Willkommen zum Internationalisierungsbeispiel</string>
+    <string name="app_name">Instrument Cluster Auto</string>
+    <string name="hello_world">Hallo Welt</string>
+    <string name="welcome_message">Willkommen beim Automobil-Dashboard</string>
+    <string name="fab_desc">Schaltfläche zum Öffnen des Internationalisierungsbildschirms</string>
+    <string name="language_english">Englisch</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_spanish">Spanisch</string>
+    <string name="language_romanian">Rumänisch</string>
+
+    <string name="speed">Geschwindigkeit</string>
+    <string name="fuel">Kraftstoffstand</string>
+    <string name="temperature">Motortemperatur</string>
+    <string name="rpm">Drehzahl</string>
+    <string name="clock">Uhr</string>
+    <string name="background_data_label">Hintergrunddaten</string>
 </resources>

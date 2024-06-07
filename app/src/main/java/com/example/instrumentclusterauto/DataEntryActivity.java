@@ -43,7 +43,6 @@ public class DataEntryActivity extends AppCompatActivity {
             }
         });
 
-        // Citirea și afișarea datelor la deschiderea activității
         readData();
     }
 
@@ -80,7 +79,6 @@ public class DataEntryActivity extends AppCompatActivity {
             Log.d(TAG, "Data must contain the word 'check'");
         }
 
-        // Re-citirea și afișarea datelor după salvare
         readData();
     }
 
@@ -128,7 +126,6 @@ public class DataEntryActivity extends AppCompatActivity {
             Log.d(TAG, "ID must contain the word 'delete'");
         }
 
-        // Re-citirea și afișarea datelor după ștergere
         readData();
     }
 
